@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <project path="device/realme/spaced" name="realme-mt6781-dev/android_device_realme_spaced" remote="github" revision="fourteen" />
+  
+  <project path="vendor/realme/spaced" name="realme-mt6781-dev/android_vendor_realme_spaced" remote="github" revision="fourteen" />
+  
+  <project path="kernel/realme/mt6781" name="realme-mt6781-dev/android_kernel_realme_mt6781" remote="github" revision="fourteen" />
+
+  <project path="hardware/mediatek" name="realme-mt6781-dev/android_hardware_mediatek" remote="github" revision="fourteen" />
+  <project path="hardware/oplus" name="realme-mt6781-dev/android_hardware_oplus" remote="github" revision="fourteen" />
+</manifest>
+
