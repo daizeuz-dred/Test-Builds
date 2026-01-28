@@ -1,0 +1,26 @@
+name: Build Infinity-X for Spaced
+
+on:
+  workflow_dispatch: # This adds the "Run Workflow" button
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Build on Crave
+        uses: sounddrill31/crave_aosp_builder@main
+        with:
+          username: ${{ secrets.CRAVE_USERNAME }}
+          token: ${{ secrets.CRAVE_TOKEN }}
+          # The commands below execute inside the Crave build environment
+          build_command: |
+            repo init -u https://github.com/ProjectInfinity-X/manifest -b 14 --git-lfs
+            # This line copies your local manifest into the right spot
+            cp $GITHUB_WORKSPACE/spaced.xml .repo/local_manifests/spaced.xml
+            repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+            source build/envsetup.sh
+            lunch infinity_spaced-userdebug
+            mka bacon
